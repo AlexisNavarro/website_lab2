@@ -66,6 +66,13 @@ function verification($user_password, $username, $pdo){
 
     if($row = $result->fetch()){
         $db_pass = $row['user_password']; //will send the first name of the user into the main page       
+         //echo $hash;
+        if(password_verify($user_password, $db_pass)){
+            return true;
+
+        }else{
+            return false;
+        }
     }else{ //if the input is not found in the user table then we search inside the admin table to find the information
         
         
@@ -76,15 +83,16 @@ function verification($user_password, $username, $pdo){
         if($row = $result->fetch()){
             $db_pass = $row['user_password']; //will send the first name of the user into the main page  
         }
+
+        if(password_verify($user_password, $db_pass)){
+            return true;
+
+        }else{
+            return false;
+        }
     }
 
    
-    //echo $hash;
-    if(password_verify($user_password, $db_pass)){
-        return true;
-
-    }else{
-        return false;
-    }
+   
 }
 ?>

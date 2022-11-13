@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once "config.php";
-require_once "create_account.php";
+require_once "create_admin.php";
 
     try {
         $pdo = new PDO($atrr, $username, $password, $opts);
@@ -35,10 +35,10 @@ require_once "create_account.php";
 //hashes the password 
 function hashPassword($input_password){
 
-    $new_salt = generate_string();
-    $temp_password = $input_password.$new_salt;    
-    $hash = password_hash($temp_password, PASSWORD_DEFAULT);
-
+    $new_salt = '0123';
+    $temp_password = $input_password;    
+    $hash = password_hash($input_password, PASSWORD_DEFAULT);
+    
     return $hash;
 
 }
