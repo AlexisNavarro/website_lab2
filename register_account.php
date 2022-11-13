@@ -23,7 +23,7 @@ require_once "create_account.php";
 
                 $hashed_password = hashPassword($input_password);
 
-                $query = "INSERT INTO users (username, user_password, first_name, last_name, creation_date, last_log_in) VALUES ('".$input_username."', '".$input_password."','".$first_name."', '".$last_name."', '".$currentDate."', '".$currentDate."');";
+                $query = "INSERT INTO users (username, user_password, first_name, last_name, creation_date, last_log_in) VALUES ('".$input_username."', '".$hashed_password."','".$first_name."', '".$last_name."', '".$currentDate."', '".$currentDate."');";
                 $result = $pdo->query($query);
                 header("Location: main_page.php");
                 
@@ -35,10 +35,10 @@ require_once "create_account.php";
 //hashes the password 
 function hashPassword($input_password){
 
-    $new_salt = generate_string();
-    $temp_password = $input_password.$new_salt;    
-    $hash = password_hash($temp_password, PASSWORD_DEFAULT);
-
+    $new_salt = '0123';
+    $temp_password = $input_password;    
+    $hash = password_hash($input_password, PASSWORD_DEFAULT);
+    
     return $hash;
 
 }

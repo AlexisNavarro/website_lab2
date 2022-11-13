@@ -15,7 +15,7 @@ require_once "sign_in.php";
         if(isset($_POST['Submit'])){
             if(isset($_POST['username']) && isset($_POST['user_password'])){
                 //verify the user password from the input
-                if(verification($_POST['user_password'])){   
+                if(verification($_POST['user_password'], $_POST['username'], $pdo )){   
                     $input_username = $_POST['username'];
                     $input_password = $_POST['user_password'];
     
@@ -53,17 +53,36 @@ require_once "sign_in.php";
     }//end 2nd if
 }//main if
 
-//NEVER USED IT, CAME FROM THE EXAMPLES OF THE BOOK
-function get_post($pdo, $var)
-{
-  return $pdo->quote($_POST[$var]);
-}
 
 //authenticate the user with the hashed password contents
-function verification($user_password){
-    $hash = password_hash($user_password, PASSWORD_DEFAULT);
-    if(password_verify($user_password, $hash)){
+function verification($user_password, $username, $pdo){
+
+ 
+    $salt = "0123";
+    $hash = password_hash($salt, PASSWORD_DEFAULT);
+    
+    $query = "SELECT * FROM users WHERE username='" . $username ."';";
+    $result = $pdo->query($query);
+
+    if($row = $result->fetch()){
+        $db_pass = $row['user_password']; //will send the first name of the user into the main page       
+    }else{ //if the input is not found in the user table then we search inside the admin table to find the information
+        
+        
+        $query = "SELECT * FROM admin WHERE username='" . $username ."';";
+        $result = $pdo->query($query);
+        
+        //allows to enter log in info if right, if not it will print user not found if log in info is wrong
+        if($row = $result->fetch()){
+            $db_pass = $row['user_password']; //will send the first name of the user into the main page  
+        }
+    }
+
+   
+    //echo $hash;
+    if(password_verify($user_password, $db_pass)){
         return true;
+
     }else{
         return false;
     }
