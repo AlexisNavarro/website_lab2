@@ -34,6 +34,7 @@ if(isset($_SESSION['user'])){
             admin: $admin
             <div class = 'form-group'>
             <a href='user_page.php'>user page</a><br><br> 
+            <a href='admin.php'>admin page</a><br><br> 
             <a href='create_admin.php'>admin sign up</a><br><br> 
             <a href='logout.php'>admin log out</a><br><br> 
             </div>

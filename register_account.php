@@ -36,8 +36,8 @@ require_once "create_account.php";
 function hashPassword($input_password){
 
     $new_salt = '0123';
-    $temp_password = $input_password;    
-    $hash = password_hash($input_password, PASSWORD_DEFAULT);
+    $temp_password = $input_password.$new_salt;    
+    $hash = password_hash($temp_password, PASSWORD_DEFAULT);
     
     return $hash;
 

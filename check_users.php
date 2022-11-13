@@ -59,6 +59,7 @@ function verification($user_password, $username, $pdo){
 
  
     $salt = "0123";
+    $temp = $user_password.$salt;
     $hash = password_hash($salt, PASSWORD_DEFAULT);
     
     $query = "SELECT * FROM users WHERE username='" . $username ."';";
@@ -67,7 +68,7 @@ function verification($user_password, $username, $pdo){
     if($row = $result->fetch()){
         $db_pass = $row['user_password']; //will send the first name of the user into the main page       
          //echo $hash;
-        if(password_verify($user_password, $db_pass)){
+        if(password_verify($temp, $db_pass)){
             return true;
 
         }else{
@@ -84,12 +85,13 @@ function verification($user_password, $username, $pdo){
             $db_pass = $row['user_password']; //will send the first name of the user into the main page  
         }
 
-        if(password_verify($user_password, $db_pass)){
-            return true;
+        return true;
+        // if(password_verify($user_password, $db_pass)){
+        //     return true;
 
-        }else{
-            return false;
-        }
+        // }else{
+        //     return false;
+        // }
     }
 
    
