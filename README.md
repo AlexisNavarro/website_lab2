@@ -17,3 +17,7 @@ To be able to run this website you will need to set up your database in MySQL to
 both of these tables will need to use VARCHAR(255), the large size is just to avoid any length issues with the hashing of the password that will be done later.
 
 Now that the database is set up, use the INSERT statment in MySQl to insert a user and admin account to the tables to be able to access the log in functions within the website.
+
+When connecting to the database please look at the config.php file which will be handling the connection to a specific database, if you are using a localhost such as I am, keep the config file the same. 
+
+##Registering and accessing an account
