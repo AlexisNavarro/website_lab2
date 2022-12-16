@@ -1,4 +1,4 @@
-# lab2_secure_web
+# website_lab2
 ## Purpose
 For this project I will be creating a website that uses MySQL as the database, PHP for the backend to allow the user to store and retrieve information to, and HTML which is the front end that will display the information that the back end has sent for the user to read 
 
