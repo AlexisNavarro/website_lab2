@@ -26,4 +26,5 @@ To be able to register an account you will look at the To be able to register an
 Now that your password is fully hashed make sure to store that hashed password into the database and when you check the DB you should be able to see the password be a string of random characters.
 
 ## Accessing an account 
+Now to access an account, look at the [check_users.php](https://github.com/AlexisNavarro/lab2_secure_web/blob/main/check_users.php) file which will be the main way to log in to either a user or admin account 
 
