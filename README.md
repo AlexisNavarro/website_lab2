@@ -20,6 +20,7 @@ Now that the database is set up, use the INSERT statment in MySQl to insert a us
 
 When connecting to the database please look at the [config.php](https://github.com/AlexisNavarro/lab2_secure_web/blob/main/config.php) file which will be handling the connection to a specific database, if you are using a localhost such as I am, keep the config file the same. 
 
-##Registering and accessing an account
+## Registering an account
+To be able to register an account you will look at the To be able to register an account you will look at the [register_account.php](https://github.com/AlexisNavarro/lab2_secure_web/blob/main/register_account.php) which is in charge of storing an account to the MySQL database, but what matters here is that I am encrypting the password using the ***hashPassword*** function which takes in as an input the raw form of the users password and then takes in a salt of our choosing. With the salt we created we now have to concatenate the raw password with the salt which then the result of that will be used in the ***password_hash*** command, along with this you can change the PASSWORD_DEFAULT to a specific hashing algorithm of your choosing.  
 
 
