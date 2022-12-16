@@ -23,4 +23,7 @@ When connecting to the database please look at the [config.php](https://github.c
 ## Registering an account
 To be able to register an account you will look at the To be able to register an account you will look at the [register_account.php](https://github.com/AlexisNavarro/lab2_secure_web/blob/main/register_account.php) which is in charge of storing an account to the MySQL database, but what matters here is that I am encrypting the password using the ***hashPassword*** function which takes in as an input the raw form of the users password and then takes in a salt of our choosing. With the salt we created we now have to concatenate the raw password with the salt which then the result of that will be used in the ***password_hash*** command, along with this you can change the PASSWORD_DEFAULT to a specific hashing algorithm of your choosing.  
 
+Now that your password is fully hashed make sure to store that hashed password into the database and when you check the DB you should be able to see the password be a string of random characters.
+
+## Accessing an account 
 
