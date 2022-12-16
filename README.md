@@ -18,6 +18,8 @@ both of these tables will need to use VARCHAR(255), the large size is just to av
 
 Now that the database is set up, use the INSERT statment in MySQl to insert a user and admin account to the tables to be able to access the log in functions within the website.
 
-When connecting to the database please look at the config.php file which will be handling the connection to a specific database, if you are using a localhost such as I am, keep the config file the same. 
+When connecting to the database please look at the [config.php](https://github.com/AlexisNavarro/lab2_secure_web/blob/main/config.php) file which will be handling the connection to a specific database, if you are using a localhost such as I am, keep the config file the same. 
 
 ##Registering and accessing an account
+
+
